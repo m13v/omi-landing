@@ -1,0 +1,306 @@
+.lab {
+  min-height: 100svh;
+  background: #121212;
+  color: #f6f7fa;
+}
+
+.productSection {
+  position: relative;
+  isolation: isolate;
+  min-height: max(720px, 100svh);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 73% 48%, rgba(81, 106, 170, 0.13), transparent 30%),
+    radial-gradient(circle at 58% 82%, rgba(122, 74, 126, 0.09), transparent 34%),
+    #121212;
+}
+
+.productSection::after {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(18, 18, 18, 0.94) 0%,
+    rgba(18, 18, 18, 0.7) 29%,
+    rgba(18, 18, 18, 0.04) 58%,
+    rgba(18, 18, 18, 0.12) 100%
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.canvas {
+  position: absolute !important;
+  z-index: 2;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.halo {
+  position: absolute;
+  z-index: 1;
+  top: 3%;
+  left: 72%;
+  width: min(66vw, 920px);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(89, 116, 185, 0.14) 0%,
+    rgba(92, 73, 125, 0.07) 38%,
+    transparent 68%
+  );
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.haze {
+  position: absolute;
+  z-index: 1;
+  right: -12%;
+  bottom: -38%;
+  width: 82vw;
+  height: 72vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(177, 136, 180, 0.09), transparent 63%);
+  filter: blur(46px);
+  pointer-events: none;
+}
+
+.copy {
+  position: absolute;
+  z-index: 8;
+  top: 46%;
+  left: clamp(32px, 7vw, 112px);
+  width: min(39vw, 540px);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.productName {
+  margin: 0 0 22px;
+  color: #aeb7c8;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.heading {
+  max-width: 9ch;
+  margin: 0;
+  color: #f7f8fa;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(3.5rem, 6.35vw, 6rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.94;
+  text-wrap: balance;
+}
+
+.heading span {
+  display: block;
+  color: #c9ced9;
+}
+
+.description {
+  max-width: 38ch;
+  margin: 30px 0 0;
+  color: #a6adba;
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  font-weight: 400;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.wakeCue {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  color: #8f98a8;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 220ms ease-out;
+}
+
+.wakeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #52617a;
+  box-shadow: 0 0 0 5px rgba(82, 97, 122, 0.12);
+  transition:
+    background-color 220ms ease-out,
+    box-shadow 220ms ease-out;
+}
+
+.wakeCueActive {
+  color: #dbe7ff;
+}
+
+.wakeCueActive .wakeDot {
+  background: #8db2ff;
+  box-shadow:
+    0 0 0 5px rgba(77, 117, 203, 0.14),
+    0 0 18px rgba(90, 140, 255, 0.76);
+}
+
+.guiMount {
+  position: absolute;
+  z-index: 20;
+  top: 18px;
+  right: 18px;
+  max-height: calc(100svh - 36px);
+  overflow: auto;
+  border-radius: 10px;
+  opacity: 0.72;
+  transition: opacity 180ms ease-out;
+}
+
+.guiMount:hover,
+.guiMount:focus-within {
+  opacity: 1;
+}
+
+.guiMount :global(.lil-gui) {
+  --background-color: #11151b;
+  --widget-color: #303743;
+  --hover-color: #3a4351;
+  --focus-color: #465267;
+  --text-color: #f1f3f7;
+  --number-color: #8fb4ff;
+  --string-color: #d8e2f0;
+  --font-family: inherit;
+  --font-size: 13px;
+  --input-font-size: 13px;
+  border: 1px solid #252d38;
+}
+
+.identity,
+.instructions {
+  position: absolute;
+  z-index: 9;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #707887;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.identity {
+  left: clamp(32px, 7vw, 112px);
+}
+
+.instructions {
+  right: 52px;
+  gap: 24px;
+}
+
+.mark {
+  color: #fff;
+  font-size: 17px;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+}
+
+.divider {
+  width: 32px;
+  height: 1px;
+  background: #38404c;
+}
+
+@media (max-width: 960px) {
+  .copy {
+    left: 40px;
+    width: min(44vw, 440px);
+  }
+
+  .identity {
+    left: 40px;
+  }
+
+  .instructions {
+    right: 32px;
+  }
+}
+
+@media (max-width: 760px) {
+  .productSection {
+    min-height: max(760px, 100svh);
+  }
+
+  .productSection::after {
+    background: linear-gradient(
+      180deg,
+      rgba(18, 18, 18, 0.82) 0%,
+      rgba(18, 18, 18, 0.45) 33%,
+      transparent 58%,
+      rgba(18, 18, 18, 0.18) 100%
+    );
+  }
+
+  .copy {
+    top: 64px;
+    right: 24px;
+    left: 24px;
+    width: auto;
+    transform: none;
+  }
+
+  .productName {
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+
+  .heading {
+    max-width: 10ch;
+    font-size: clamp(2.75rem, 13vw, 4.1rem);
+    line-height: 0.96;
+  }
+
+  .description {
+    max-width: 32ch;
+    margin-top: 18px;
+    font-size: 15px;
+  }
+
+  .wakeCue {
+    margin-top: 18px;
+  }
+
+  .halo {
+    top: 30%;
+    left: 50%;
+    width: 125vw;
+  }
+
+  .guiMount {
+    top: 10px;
+    right: 10px;
+  }
+
+  .identity {
+    bottom: 20px;
+    left: 24px;
+  }
+
+  .instructions {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wakeCue,
+  .wakeDot,
+  .guiMount {
+    transition: none;
+  }
+}

@@ -43,6 +43,8 @@ next-env.d.ts
 
 # Playwright MCP cache
 .playwright-mcp/
+.playwright-cli/
+/output/playwright/
 
 # Local scripts
 /scripts/
