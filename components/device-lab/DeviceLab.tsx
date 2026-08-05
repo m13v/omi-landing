@@ -23,9 +23,14 @@ import DeviceStage from "./DeviceStage";
 import { createDefaultLabSettings } from "./device-settings";
 import styles from "./device-lab.module.css";
 
-export default function DeviceLab() {
+export interface DeviceLabProps {
+  onReady?: () => void;
+}
+
+export default function DeviceLab({ onReady }: DeviceLabProps) {
   const reduceMotion = useReducedMotion() ?? false;
   const [mobileOptimized, setMobileOptimized] = useState(false);
+  const readySignaled = useRef(false);
   const settings = useMemo(createDefaultLabSettings, []);
   const scrollTrack = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -75,6 +80,14 @@ export default function DeviceLab() {
   const [messageConnected, setMessageConnected] = useState(false);
   const [purchaseDetailsOpen, setPurchaseDetailsOpen] = useState(false);
   const thoughtHideTimer = useRef<number | null>(null);
+
+  const signalReady = useCallback(() => {
+    if (readySignaled.current) return;
+    readySignaled.current = true;
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => onReady?.());
+    });
+  }, [onReady]);
 
   useEffect(() => {
     const query = window.matchMedia("(max-width: 820px), (pointer: coarse)");
@@ -778,6 +791,7 @@ export default function DeviceLab() {
             toneMappingExposure: settings.stage.exposure,
           }}
           aria-label="Interactive Omi pendant. Hover to wake its light and set it gently swinging."
+          onCreated={signalReady}
         >
           <DeviceStage
             reduceMotion={reduceMotion}
