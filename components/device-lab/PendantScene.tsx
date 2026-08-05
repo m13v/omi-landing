@@ -176,6 +176,8 @@ export interface DeviceProps {
   onWakeChange?: (awake: boolean) => void;
   onActivate?: () => void;
   physicsRelease?: MotionValue<number>;
+  forceAwake?: boolean;
+  interactionEnabled?: boolean;
 }
 
 export class PhysicsBoundary extends Component<
@@ -288,6 +290,8 @@ export function StaticPendantFallback({
   position = [0, -0.16, 0],
   onWakeChange,
   onActivate,
+  forceAwake,
+  interactionEnabled,
 }: DeviceProps) {
   return (
     <>
@@ -302,6 +306,8 @@ export function StaticPendantFallback({
           settings={settings}
           onWakeChange={onWakeChange}
           onActivate={onActivate}
+          forceAwake={forceAwake}
+          interactionEnabled={interactionEnabled}
         />
       </group>
     </>
@@ -315,13 +321,15 @@ function PendantVisual({
   onWakeChange,
   onActivate,
   physicsRelease,
+  forceAwake = false,
+  interactionEnabled = true,
 }: Omit<DeviceProps, "position"> & { body?: BodyRef }) {
   const outerGlow = useRef<THREE.MeshBasicMaterial>(null);
   const innerGlow = useRef<THREE.MeshBasicMaterial>(null);
   const ledCore = useRef<THREE.MeshBasicMaterial>(null);
   const ledLight = useRef<THREE.PointLight>(null);
   const isHovered = useRef(false);
-  const glowLevel = useRef(0);
+  const glowLevel = useRef(forceAwake ? 1 : 0);
   const grainTexture = useMemo(createGrainTexture, []);
   const shellGrainTexture = useMemo(createGrainTexture, []);
   const shellGeometry = useMemo(() => getUnifiedShellGeometry(52), []);
@@ -446,8 +454,15 @@ function PendantVisual({
     onWakeChange?.(false);
   }, [onWakeChange]);
 
+  useEffect(() => {
+    if (interactionEnabled) return;
+    isHovered.current = false;
+    document.documentElement.style.cursor = "default";
+    onWakeChange?.(false);
+  }, [interactionEnabled, onWakeChange]);
+
   useFrame((_state, delta) => {
-    const lightTarget = isHovered.current ? 1 : 0;
+    const lightTarget = forceAwake || isHovered.current ? 1 : 0;
     const lightEase = reduceMotion
       ? 1
       : 1 - Math.exp(-delta * (lightTarget > glowLevel.current ? 5.5 : 3.2));
@@ -484,21 +499,23 @@ function PendantVisual({
       rotation={[0.02, PRODUCT_YAW, -0.015]}
       scale={PENDANT_SCALE}
     >
-          <mesh
-            position={[0, 0, 0.7]}
-            onPointerMove={movePendant}
-            onPointerOver={wakePendant}
-            onPointerOut={restPendant}
-            onClick={activatePendant}
-          >
-            <circleGeometry args={[1.09, 24]} />
-            <meshBasicMaterial
-              transparent
-              opacity={0}
-              depthWrite={false}
-              colorWrite={false}
-            />
-          </mesh>
+          {interactionEnabled && (
+            <mesh
+              position={[0, 0, 0.7]}
+              onPointerMove={movePendant}
+              onPointerOver={wakePendant}
+              onPointerOut={restPendant}
+              onClick={activatePendant}
+            >
+              <circleGeometry args={[1.09, 24]} />
+              <meshBasicMaterial
+                transparent
+                opacity={0}
+                depthWrite={false}
+                colorWrite={false}
+              />
+            </mesh>
+          )}
 
           <mesh geometry={shellGeometry} castShadow receiveShadow>
         <meshPhysicalMaterial
@@ -810,4 +827,3 @@ export function PendantRig({
     </>
   );
 }
-
