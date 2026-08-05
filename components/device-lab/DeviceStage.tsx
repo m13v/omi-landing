@@ -609,8 +609,8 @@ function ScrollCamera({
     ];
 
     if (isNarrow) {
-      nextFrames[0].position.add(new THREE.Vector3(-3.2, -0.48, 1));
-      nextFrames[0].target.add(new THREE.Vector3(-3.2, -0.48, 0));
+      nextFrames[0].position.add(new THREE.Vector3(-3.2, -0.48, 4.4));
+      nextFrames[0].target.add(new THREE.Vector3(-3.2, -0.82, 0));
       nextFrames[1].position.add(new THREE.Vector3(0, 0.1, 1));
       nextFrames[1].target.add(new THREE.Vector3(-0.7, -0.26, 0));
       nextFrames[2].position.add(new THREE.Vector3(0, 0.1, 1));

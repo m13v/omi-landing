@@ -1396,9 +1396,9 @@
   }
 
   .frameTwoFilmDock {
-    top: 49vh;
+    top: auto;
     right: 18px;
-    bottom: auto;
+    bottom: 24px;
     left: 18px;
     width: auto;
   }
@@ -1434,8 +1434,9 @@
     bottom: auto;
     left: 20px;
     width: auto;
-    backdrop-filter: blur(8px) saturate(0.82);
-    -webkit-backdrop-filter: blur(8px) saturate(0.82);
+    background: rgba(7, 10, 16, 0.62);
+    backdrop-filter: blur(24px) saturate(0.9);
+    -webkit-backdrop-filter: blur(24px) saturate(0.9);
   }
 
   .memoryProofCard {
@@ -1456,26 +1457,7 @@
   }
 
   .frameFourImage {
-    z-index: -1;
-    top: 0;
-    right: -45vw;
-    bottom: 0;
-    width: 112vw;
-    height: 100%;
-    aspect-ratio: auto;
-    border: 0;
-    box-shadow: none;
-  }
-
-  .frameFourImage img {
-    opacity: 0.38;
-    object-position: 55% center;
-  }
-
-  .frameFourImage > span {
-    background:
-      linear-gradient(90deg, #121212 4%, rgba(18, 18, 18, 0.82) 35%, rgba(18, 18, 18, 0.2) 70%),
-      linear-gradient(180deg, rgba(18, 18, 18, 0.46), transparent 30%, rgba(18, 18, 18, 0.54));
+    display: none;
   }
 
   .purchaseActions {
