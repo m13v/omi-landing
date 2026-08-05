@@ -8,14 +8,9 @@
 
 ## Thesis
 
-Omi's software promise is personal and ambient, but the wearable is also a physical object someone chooses to keep close. This concept makes the hardware tangible first, then uses a four-scene scroll story to connect the pendant to understanding, recall, and purchase intent.
+As a wearable brand, Omi has to sell more than utility. It has an opportunity to position the pendant as a luxury object for tech-forward individuals: something desirable, expressive, and considered enough to wear every day. The web experience should feel like a digital flagship—memorable on first contact and rich enough to make someone imagine the product in their own hand.
 
-## The four scenes
-
-1. **Device** — A close, material-first introduction. Hover wakes the LED; desktop interaction releases the pendant into a weighted cord simulation.
-2. **Intelligence** — Product copy and an expandable launch film explain how Omi listens, learns, and acts.
-3. **Memory** — An instanced conveyor of pendants moves through the composition while a compact proof panel turns listening into visible outputs.
-4. **Get Omi** — The story resolves into product benefits, a wearable image, and a direct purchase CTA.
+This concept creates that feeling through scale, material response, dramatic light, physical depth, and interaction. The pendant does not read as a flat product image; it has weight, surface, movement, and presence. By letting people experience those qualities before they own the device, the site turns Omi from an abstract AI accessory into an object of desire.
 
 ## Design system
 
