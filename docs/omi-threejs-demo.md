@@ -34,7 +34,7 @@ The feature is isolated at `/device-lab`; it does not replace or modify the exis
 
 ## Mobile and performance path
 
-- Physics are disabled for coarse-pointer and phone-width devices; the pendant remains interactive through the static scene fallback.
+- Physics are disabled for coarse-pointer and phone-width devices; frame one keeps the LED awake while frame-two pointer interactions are removed.
 - Device pixel ratio is capped more aggressively on mobile.
 - Mobile particle counts and environment-map resolution are reduced.
 - Depth of field and chromatic aberration are disabled on mobile; bloom uses fewer levels.
@@ -62,7 +62,3 @@ Open [localhost:3002/device-lab](http://localhost:3002/device-lab).
 - `public/images/omi-logo.png` and `public/videos/omi-rewind-hq.mp4` already exist in the upstream public repository.
 - `public/images/omi-office-wearer.png` was supplied as a visual reference for this concept. Confirm Omi's preferred source asset and reuse permission before proposing it for production.
 - The pendant geometry, materials, lighting, physics, choreography, and interface implementation are original to this concept branch.
-
-## Contribution posture
-
-The public `omi-landing` repository and the Shopify wearable storefront are separate product surfaces. This concept should be shared as a proof link first. A pull request should only follow confirmation that this public repository is the correct implementation destination.
