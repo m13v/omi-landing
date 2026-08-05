@@ -36,14 +36,8 @@ function FabricationLoader({ progress, exiting }: {
     >
       <div className={styles.fabricationGlow} aria-hidden="true" />
 
-      <header className={styles.fabricationHeader}>
-        <img src="/images/omi-logo.png" width="118" height="52" alt="Omi" />
-        <span>Personal intelligence / unit assembly</span>
-      </header>
-
       <div className={styles.fabricationCenter}>
-        <p>Object 01 — wearable intelligence</p>
-        <h1>Fabricating<br />your Omi</h1>
+        <h1>Fabricating your Omi</h1>
 
         <div className={styles.fabricationConveyor} aria-hidden="true">
           <span className={styles.fabricationRailTop} />
@@ -62,11 +56,6 @@ function FabricationLoader({ progress, exiting }: {
         <span>{String(progress).padStart(3, "0")}</span>
         <i style={{ transform: `scaleY(${progress / 100})` }} />
       </div>
-
-      <footer className={styles.fabricationFooter}>
-        <span>Material / translucent polymer</span>
-        <span>Process / live assembly</span>
-      </footer>
     </div>
   );
 }

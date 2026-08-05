@@ -33,7 +33,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(94vw, 1080px);
+  width: min(50vw, 540px);
   aspect-ratio: 2.1 / 1;
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -43,71 +43,30 @@
   pointer-events: none;
 }
 
-.fabricationHeader,
-.fabricationFooter {
-  position: absolute;
-  z-index: 2;
-  right: clamp(24px, 3.6vw, 56px);
-  left: clamp(24px, 3.6vw, 56px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: rgba(218, 224, 235, 0.47);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.17em;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.fabricationHeader {
-  top: clamp(24px, 3.5vw, 50px);
-}
-
-.fabricationHeader img {
-  width: 74px;
-  height: auto;
-  opacity: 0.9;
-}
-
-.fabricationFooter {
-  bottom: clamp(24px, 3.2vw, 44px);
-}
-
 .fabricationCenter {
   position: absolute;
   z-index: 1;
   top: 50%;
   left: 50%;
-  width: min(940px, 82vw);
+  width: min(500px, 82vw);
   transform: translate(-50%, -50%);
   text-align: center;
-}
-
-.fabricationCenter > p {
-  margin: 0 0 16px;
-  color: rgba(190, 203, 225, 0.54);
-  font-size: 9px;
-  font-weight: 650;
-  letter-spacing: 0.22em;
-  line-height: 1.2;
-  text-transform: uppercase;
 }
 
 .fabricationCenter h1 {
   margin: 0;
   color: #f5f6f8;
-  font-size: clamp(46px, 6vw, 84px);
-  font-weight: 510;
-  letter-spacing: -0.068em;
-  line-height: 0.88;
+  font-size: clamp(16px, 1.7vw, 22px);
+  font-weight: 540;
+  letter-spacing: -0.035em;
+  line-height: 1;
 }
 
 .fabricationConveyor {
   position: relative;
-  width: min(820px, 80vw);
-  height: 180px;
-  margin: 40px auto 0;
+  width: min(410px, 78vw);
+  height: 92px;
+  margin: 20px auto 0;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
@@ -115,18 +74,18 @@
 
 .fabricationTrack {
   position: absolute;
-  top: 22px;
-  left: -138px;
+  top: 11px;
+  left: -69px;
   display: flex;
-  gap: 34px;
+  gap: 17px;
   width: max-content;
   animation: fabrication-conveyor 3.8s linear infinite;
   will-change: transform;
 }
 
 .fabricationPendant {
-  flex: 0 0 104px;
-  width: 104px;
+  flex: 0 0 52px;
+  width: 52px;
   color: rgba(188, 204, 232, 0.31);
 }
 
@@ -168,18 +127,18 @@
 }
 
 .fabricationRailTop {
-  top: 116px;
+  top: 58px;
 }
 
 .fabricationRailBottom {
-  top: 144px;
+  top: 72px;
 }
 
 .fabricationRailTop::after,
 .fabricationRailBottom::after {
   position: absolute;
   inset: -2px 0;
-  background: repeating-linear-gradient(90deg, transparent 0 31px, rgba(170, 188, 220, 0.22) 31px 32px);
+  background: repeating-linear-gradient(90deg, transparent 0 15px, rgba(170, 188, 220, 0.22) 15px 16px);
   content: "";
 }
 
@@ -212,7 +171,7 @@
 
 @keyframes fabrication-conveyor {
   to {
-    transform: translate3d(-138px, 0, 0);
+    transform: translate3d(-69px, 0, 0);
   }
 }
 
@@ -1324,64 +1283,19 @@
 }
 
 @media (max-width: 760px) {
-  .fabricationHeader,
-  .fabricationFooter {
-    right: 20px;
-    left: 20px;
-  }
-
-  .fabricationHeader {
-    top: 24px;
-  }
-
-  .fabricationHeader img {
-    width: 62px;
-  }
-
-  .fabricationHeader span,
-  .fabricationFooter span:last-child {
-    display: none;
-  }
-
   .fabricationCenter {
-    top: 48%;
+    top: 50%;
     width: 100%;
   }
 
-  .fabricationCenter > p {
-    margin-bottom: 13px;
-    font-size: 8px;
-  }
-
   .fabricationCenter h1 {
-    font-size: clamp(40px, 13vw, 56px);
-    line-height: 0.9;
+    font-size: clamp(15px, 4.6vw, 18px);
+    line-height: 1;
   }
 
   .fabricationConveyor {
-    width: 100vw;
-    height: 146px;
-    margin-top: 34px;
-  }
-
-  .fabricationTrack {
-    top: 14px;
-    left: -102px;
-    gap: 24px;
-    animation-name: fabrication-conveyor-mobile;
-  }
-
-  .fabricationPendant {
-    flex-basis: 78px;
-    width: 78px;
-  }
-
-  .fabricationRailTop {
-    top: 84px;
-  }
-
-  .fabricationRailBottom {
-    top: 106px;
+    width: min(410px, 92vw);
+    margin-top: 18px;
   }
 
   .fabricationProgress {
@@ -1392,12 +1306,6 @@
 
   .fabricationProgress i {
     height: 48px;
-  }
-
-  .fabricationFooter {
-    bottom: 24px;
-    justify-content: flex-start;
-    font-size: 8px;
   }
 
   .productSection {
@@ -1634,12 +1542,6 @@
     right: 18px;
     bottom: 32px;
     width: calc(100% - 36px);
-  }
-}
-
-@keyframes fabrication-conveyor-mobile {
-  to {
-    transform: translate3d(-102px, 0, 0);
   }
 }
 
